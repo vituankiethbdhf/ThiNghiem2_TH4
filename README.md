@@ -179,7 +179,7 @@ Các hình ảnh và video minh chứng
 |---|---|---|
 | 1 | Kết quả REST GET trả về JSON |https://drive.google.com/file/d/1OjrTjMA-GHOodfldu05xCo9Wnz0dnRGm/view?usp=sharing |
 | 2 | Giao diện Node-RED Dashboard  và LED và OLED thay đổi trạng thái | https://drive.google.com/file/d/1Ib5hNWUs1OTLyQxdzoCpJ02nIXNcl878/view?usp=sharing |
-| 3 | MQTT Explorer hiển thị topic và dữ liệu |  |
+| 3 | MQTT Explorer hiển thị topic và dữ liệu | https://drive.google.com/file/d/1aNXDxC8a9JoMWEa9gVQ7VPG6zB5kQ9yH/view?usp=sharing  |
 
 ## 7. Thư viện sử dụng
 
