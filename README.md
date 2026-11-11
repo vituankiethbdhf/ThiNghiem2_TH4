@@ -22,18 +22,26 @@ Nội dung gồm 3 bài firmware:
 
 ```text
 TH4/
-│
 ├── Bai1_REST_API/
-│   └── main.cpp
+│   ├── src/
+│   │   └── main.cpp
+│   ├── platformio.ini
+│   ├── diagram.json
+│   └── wokwi.toml
 │
 ├── Bai2_MQTT/
-│   └── main.cpp
+│   ├── src/
+│   │   └── main.cpp
+│   ├── platformio.ini
+│   ├── diagram.json
+│   └── wokwi.toml
 │
 ├── Bai3_ESP32_Application/
 │   ├── src/
 │   │   └── main.cpp
 │   ├── platformio.ini
-│   └── diagram.json
+│   ├── diagram.json
+│   └── wokwi.toml
 │
 ├── Node-RED/
 │   └── flow.json
