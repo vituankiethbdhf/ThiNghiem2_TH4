@@ -10,11 +10,6 @@
 - **Dashboard:** Node-RED + node-red-dashboard
 - **MQTT Broker:** broker.hivemq.com, cổng 1883
 
-## Cách chạy
-
-1. Mở từng thư mục bài bằng VS Code, build bằng `pio run`.
-2. Nhấn `F1`, chọn `Wokwi: Start Simulator`.
-3. Node-RED: cài palette `node-red-dashboard`, chọn Import, nạp file `NodeRED/flow.json`, bấm Deploy. Dashboard ở địa chỉ `http://localhost:1880/ui`.
 
 ## Nội dung thực hiện
 
