@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "author": "Vi Tuan Kiet",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -90, "left": 200, "attrs": { "temperature": "28", "humidity": "65" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "dht1:VCC", "red", [] ],
+    [ "esp:D15", "dht1:SDA", "green", [] ],
+    [ "esp:GND.1", "dht1:GND", "black", [] ]
+  ],
+  "dependencies": {}
+}

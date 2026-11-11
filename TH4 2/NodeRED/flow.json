@@ -1,0 +1,320 @@
+[
+  {
+    "id": "flow1",
+    "type": "tab",
+    "label": "TH4 - 25112515",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "broker1",
+    "type": "mqtt-broker",
+    "name": "HiveMQ Public",
+    "broker": "broker.hivemq.com",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "autoUnsubscribe": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "willMsg": {},
+    "userProps": "",
+    "sessionExpiry": ""
+  },
+  {
+    "id": "tab1",
+    "type": "ui_tab",
+    "name": "TH4 - 25112515",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "grp1",
+    "type": "ui_group",
+    "name": "Cam bien",
+    "tab": "tab1",
+    "order": 1,
+    "disp": true,
+    "width": "6",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "grp2",
+    "type": "ui_group",
+    "name": "Dieu khien",
+    "tab": "tab1",
+    "order": 2,
+    "disp": true,
+    "width": "6",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "mqttin1",
+    "type": "mqtt in",
+    "z": "flow1",
+    "name": "Telemetry",
+    "topic": "TH4/25112515/telemetry",
+    "qos": "0",
+    "datatype": "utf8",
+    "broker": "broker1",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 130,
+    "y": 140,
+    "wires": [
+      [
+        "json1",
+        "dbg1"
+      ]
+    ]
+  },
+  {
+    "id": "json1",
+    "type": "json",
+    "z": "flow1",
+    "name": "",
+    "property": "payload",
+    "action": "obj",
+    "pretty": false,
+    "x": 290,
+    "y": 140,
+    "wires": [
+      [
+        "fn1"
+      ]
+    ]
+  },
+  {
+    "id": "fn1",
+    "type": "function",
+    "z": "flow1",
+    "name": "Tach du lieu",
+    "func": "var d = msg.payload;\nif (typeof d !== 'object' || d === null) { return null; }\nvar t = Number(d.temperature);\nvar h = Number(d.humidity);\nreturn [\n  { payload: t },\n  { payload: h },\n  [ { topic: 'Nhiet do (C)', payload: t }, { topic: 'Do am (%)', payload: h } ],\n  { payload: (d.led === 'ON') ? 'LED: BAT' : 'LED: TAT' }\n];",
+    "outputs": 4,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 450,
+    "y": 140,
+    "wires": [
+      [
+        "gT"
+      ],
+      [
+        "gH"
+      ],
+      [
+        "chart1"
+      ],
+      [
+        "txtLed"
+      ]
+    ]
+  },
+  {
+    "id": "gT",
+    "type": "ui_gauge",
+    "z": "flow1",
+    "name": "Nhiet do",
+    "group": "grp1",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "Nhiet do",
+    "label": "C",
+    "format": "{{value}}",
+    "min": 0,
+    "max": 60,
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "x": 640,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "gH",
+    "type": "ui_gauge",
+    "z": "flow1",
+    "name": "Do am",
+    "group": "grp1",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "Do am",
+    "label": "%",
+    "format": "{{value}}",
+    "min": 0,
+    "max": 100,
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "x": 640,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "chart1",
+    "type": "ui_chart",
+    "z": "flow1",
+    "name": "Lich su",
+    "group": "grp1",
+    "order": 3,
+    "width": 0,
+    "height": 0,
+    "label": "Lich su nhiet do / do am",
+    "chartType": "line",
+    "legend": "true",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "Cho du lieu...",
+    "dot": false,
+    "ymin": "",
+    "ymax": "",
+    "removeOlder": 1,
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "useUTC": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "outputs": 1,
+    "useDifferentColor": false,
+    "className": "",
+    "x": 640,
+    "y": 180,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "txtLed",
+    "type": "ui_text",
+    "z": "flow1",
+    "group": "grp2",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "name": "Trang thai LED",
+    "label": "Trang thai",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "x": 650,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "sw1",
+    "type": "ui_switch",
+    "z": "flow1",
+    "name": "Dieu khien LED",
+    "label": "LED",
+    "tooltip": "",
+    "group": "grp2",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "decouple": "false",
+    "topic": "",
+    "topicType": "str",
+    "style": "",
+    "onvalue": "ON",
+    "onvalueType": "str",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "OFF",
+    "offvalueType": "str",
+    "officon": "",
+    "offcolor": "",
+    "animate": false,
+    "className": "",
+    "x": 130,
+    "y": 340,
+    "wires": [
+      [
+        "mqttout1"
+      ]
+    ]
+  },
+  {
+    "id": "mqttout1",
+    "type": "mqtt out",
+    "z": "flow1",
+    "name": "Control LED",
+    "topic": "TH4/25112515/control",
+    "qos": "0",
+    "retain": "false",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "broker1",
+    "x": 400,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "dbg1",
+    "type": "debug",
+    "z": "flow1",
+    "name": "Telemetry raw",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 460,
+    "y": 60,
+    "wires": []
+  }
+]
