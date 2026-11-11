@@ -1,8 +1,8 @@
 # TH4 – ESP32, REST API, MQTT và Node-RED
 
 ## 1. Thông tin sinh viên
-
-- **Mã sinh viên (SV_ID):** 25112515
+- **Họ và tên:** Vi Tuấn Kiệt
+- **Mã sinh viên:** 25112063
 - **Tên đề tài:** Xây dựng ứng dụng IoT sử dụng ESP32, REST API, MQTT và Node-RED
 - **Môi trường thực hiện:** PlatformIO, VS Code, Wokwi, Node-RED
 - **MQTT Broker:** broker.hivemq.com
@@ -37,12 +37,6 @@ TH4/
 │
 ├── Node-RED/
 │   └── flow.json
-│
-├── Images/
-│   ├── rest-api.png
-│   ├── dashboard.png
-│   ├── wokwi-led-oled.png
-│   └── mqtt-explorer.png
 │
 └── README.md
 ```
