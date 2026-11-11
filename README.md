@@ -173,14 +173,13 @@ Node-RED nhận telemetry từ ESP32 và gửi lệnh điều khiển LED qua MQ
 
 ## 6. Kết quả thực hiện
 
-Các hình ảnh và video minh chứng được lưu trong thư mục `Images/`.
+Các hình ảnh và video minh chứng 
 
-| STT | Nội dung minh chứng | Tệp |
+| STT | Nội dung minh chứng | link |
 |---|---|---|
-| 1 | Kết quả REST GET trả về JSON | `rest-api.png` |
-| 2 | Giao diện Node-RED Dashboard | `dashboard.png` |
-| 3 | LED và OLED thay đổi trạng thái | `wokwi-led-oled.png` |
-| 4 | MQTT Explorer hiển thị topic và dữ liệu | `mqtt-explorer.png` |
+| 1 | Kết quả REST GET trả về JSON |https://drive.google.com/file/d/1OjrTjMA-GHOodfldu05xCo9Wnz0dnRGm/view?usp=sharing |
+| 2 | Giao diện Node-RED Dashboard  và LED và OLED thay đổi trạng thái | https://drive.google.com/file/d/1Ib5hNWUs1OTLyQxdzoCpJ02nIXNcl878/view?usp=sharing |
+| 3 | MQTT Explorer hiển thị topic và dữ liệu |  |
 
 ## 7. Thư viện sử dụng
 
